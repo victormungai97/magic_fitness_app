@@ -26,12 +26,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
   hydrated_bloc: ^9.0.0
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
+  bloc: ^8.1.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

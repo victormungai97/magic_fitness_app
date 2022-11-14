@@ -226,6 +226,10 @@ A number of external third-party packages have been used in this project to prov
   + Implement immutable classes with builtin value equality.
   + Handles (de)serialization compatible and in conjunction with **_json_serializable_**.
   + Used in conjuction with **_bloc_** to generate event and state classes by use of [*Union types and Sealed classes*](https://pub.dev/packages/freezed#union-types-and-sealed-classes).
-+ [**_json_serializable_**](https://pub.dev/packages/json_serializable) and [**_json_annotation_**]()
++ [**_json_serializable_**](https://pub.dev/packages/json_serializable) and [**_json_annotation_**](https://pub.dev/packages/json_annotation)
   + Provides builders for handling **JSON** in application.
   + These builders generate code when finding annotations particularly for custom JSON keys.
+
++ [**_path_provider_**](https://pub.dev/packages/path_provider):
+  + Used to find commonly used locations on the filesystem on native (non-web) platforms.
+  + Works in conjunction with **_hydrated_bloc_** to set up the directory for persistent storage and access of states. 
