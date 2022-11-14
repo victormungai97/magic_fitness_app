@@ -19,9 +19,11 @@ samples, guidance on mobile development, and a full API reference.
 
 
 # Magic Fitness App
-**_A basic fitness application built in Flutter that can track a user's workouts. Here, a user can view workouts that they have done and record, edit and delete details of - or an entire - individual workout. It is a test application with no commercial usage._**
+**_A basic fitness application built in Flutter that can track a user's workouts._** 
 
-[Generate Google Play Badge at `https://play.google.com/intl/en_us/badges/`.]: #
+Here, a user can view workouts that they have done and record, edit and delete details of - or an entire - individual workout. 
+
+> It is a test application with no commercial usage.
 
 [![Get Magic Fitness App via Firebase App Distribution](badges/firebase_app_distribution.png "Get it via Firebase App Distribution")]()
 
@@ -114,7 +116,7 @@ _**x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x**_
 > The business logic layer's responsibility is to respond to input from the presentation layer with new states.<br> 
 > This layer can depend on one or more repositories/controllers to retrieve data needed to build up the application state.
 
-Business or Domain Logic is the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed.<br>
+Business or Domain Logic is the part of the program that encodes the real-world operational rules that determine how data can be created, stored, and changed.<br>
 Subsequently, this layer acts the bridge between the user interface (*presentation*) and *data* layers. 
 It is notified of events/actions from the presentation and then communicates with data 
 in order to build a new state for the presentation layer to consume.
