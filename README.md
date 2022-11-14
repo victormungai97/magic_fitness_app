@@ -32,20 +32,19 @@ Here, a user can view workouts that they have done and record, edit and delete d
 </a>
 
 This app has two screens:
-## 1. List Screen
+### 1. List Screen
 * Shows a list of all the workouts the user has recorded.
 * User is be able to delete any of the recorded workouts.
 * Clicking on an item should take the user to the workout screen where they should be able to make edits and change any detail of that recorded workout.
 
-## 2. Individual Screen
+### 2. Individual Screen
 * On this screen, the user can record the details of a particular workout, be it a newly created workout or a pre-existing workout.
 * They should also be able to select the weight used and the number of repetitions performed.
 * A workout consists of one or more sets and each set is made up of one or repetitions.
 
 ---
 
-
-### ARCHITECTURE
+## ARCHITECTURE
 > Guides: 
 > + [BLoC - Architecture](https://bloclibrary.dev/#/architecture)
 > + [Flutter - Reactive Programming - Streams - BLoC](https://www.didierboelens.com/2018/08/reactive-programming-streams-bloc/)
@@ -62,7 +61,7 @@ This approach results in a [modular](https://www.techopedia.com/definition/24771
 
 With this in mind, the code structure is broken down into the following layers:
 
-#### 1. Presentation
+### 1. Presentation
 > The presentation layer's responsibility is to figure out how to render itself based on prevailing states.<br> 
 > In addition, it should handle user input and application lifecycle events.
 
@@ -109,7 +108,7 @@ is employed to allow the code to be processed as one file.
 
 _**x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x**_
 
-#### 2. Business Logic
+### 2. Business Logic
 
 [![BLoC Library](https://raw.githubusercontent.com/felangel/bloc/master/docs/assets/bloc_logo_full.png)](https://bloclibrary.dev)
 
@@ -144,7 +143,7 @@ to create clean code with **factory constructors** representing the various even
 
 _**x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x**_
 
-#### 3. Data
+### 3. Data
 >The data layer's responsibility is to retrieve/manipulate data from one or more sources.
 
 This layer is the lowest level of the application and interacts with databases, network requests, and other asynchronous data sources. 
@@ -198,3 +197,35 @@ Their primary responsibility is to **provide raw data** and they should be _gene
 This layer is a wrapper around one or more services with which the Bloc Layer communicates.
 Consequently, classes in this layer can interact with multiple services and perform transformations 
 on the data before handing the result to the business logic Layer.
+
+---
+
+## THIRD PARTY PACKAGES
+> Source:
+> -> [Dart packages](https://pub.dev)
+
+A number of external third-party packages have been used in this project to provide extended capability. This include:
+
++ [**_very_good_analysis_**](https://pub.dev/packages/very_good_analysis):
+  + Contains a set of __recommended lints__ for Dart and Flutter (on top of pre-defined linting rules) to encourage good coding practices.
+  + These added rules help particularly in _enforcing documentation_ among other scenarios.
+  + The lint set provided by the package is  activated in the `analysis_options.yaml` file located at the root of your package.
+
++ [**_bloc_**](https://pub.dev/packages/bloc):
+  + Package that helps to implement the __Business Logic Component__ (*BLOC*) design pattern for separation of code.
+  + Partners with **_freezed_** in generation of __events__ (*actions emanating from UI*) and **states** (_data sent from logic_).
+  + Further provided and used in:
+    + [_**flutter_bloc**_](https://pub.dev/packages/flutter_bloc):
+      + Widgets that make it easy to integrate `blocs` and `cubits` into Flutter.
+    + [_**hydrated_bloc**_](https://pub.dev/packages/hydrated_bloc):
+      + An extension to _package:bloc_ which **automatically persists and restores states** of bloc and cubit.
+      + Built on top of [_**hive**_](https://pub.dev/packages/hive) for a **`platform-agnostic`**, performant storage layer.
+
++ [**_freezed_**](https://pub.dev/packages/freezed) and [**_freezed_annotation_**](https://pub.dev/packages/freezed_annotation):
+  + Used for code generation particularly with regards to data classes **_("models")_**.
+  + Implement immutable classes with builtin value equality.
+  + Handles (de)serialization compatible and in conjunction with **_json_serializable_**.
+  + Used in conjuction with **_bloc_** to generate event and state classes by use of [*Union types and Sealed classes*](https://pub.dev/packages/freezed#union-types-and-sealed-classes).
++ [**_json_serializable_**](https://pub.dev/packages/json_serializable) and [**_json_annotation_**]()
+  + Provides builders for handling **JSON** in application.
+  + These builders generate code when finding annotations particularly for custom JSON keys.
