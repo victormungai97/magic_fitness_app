@@ -46,14 +46,6 @@ jobs:
         with:
           channel: "stable"
 
-      # Install Dart Full Coverage from previously created Github Action to ensure coverage of 100%
-      - uses: stelynx/dart-full-coverage@v1.0.5
-        with:
-          # The name of your package, the same as you use in imports
-          package: "magic_fitness_app"
-          # A comma-separated list of files to be ignored and not imported in `test_file`
-          ignore: "*_event.dart, *_state.dart, *.g.dart, *.freezed.dart, *.config.dart, *.mocks.dart, bloc_observer.dart"
-
       - run: flutter --version  # Confirm Flutter is operational
 
       - name: Get all Flutter Packages # Label for one's step to display on GitHub.
