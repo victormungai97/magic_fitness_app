@@ -1,0 +1,90 @@
+# This file defines a CI/CD workflow to run in Github Actions with focus on Flutter Web
+
+# This workflow shall build the flutter app for the web
+# and shall only run when the testing workflow is executed or completed
+# using the workflow_run event as a trigger
+# Source: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_run
+
+# Name of workflow.
+name: Flutter Build and Deploy to Web
+
+# Workflow will only trigger when `Flutter Test` workflow completed when running on `master` branch
+on:
+  # NB: This event will only trigger a workflow run if the workflow file is on the default branch.
+  workflow_run:
+    workflows: ["Flutter Test"]
+    types:
+      - completed
+    branches: [ master ]
+
+  workflow_dispatch:
+
+# Jobs will only run when test workflow completes successfully
+jobs:
+  on-test-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The test workflow that triggered this workflow passed'
+      - run: echo 'We shall now build for and deploy to web'
+
+  # Build for the Web
+  build_web:
+    name: Build a web app
+    needs: [ on-test-success ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      # The branch or tag ref that triggered the workflow will be checked out. See: https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - run: flutter clean && flutter pub get
+
+      - name: Build application for deployment on website
+        run: flutter build web --web-renderer canvaskit
+
+      - name: 'Upload built web app to GitHub'
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-webapp
+          path: build/web/
+
+  release_web:
+    name: Deploy
+    needs: [ build_web ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create build folder
+        run: mkdir -p build
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: release-webapp
+          path: ./build/web
+
+      - name: Deploy to Github Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The test workflow that triggered this workflow failed'
+      - run: echo 'We shall now notify administrators of this failure'

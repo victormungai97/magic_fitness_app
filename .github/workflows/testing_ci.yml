@@ -1,0 +1,75 @@
+# This file defines a CI/CD workflow to run in Github Actions with focus on testing
+
+# Name of workflow.
+name: Flutter Test
+
+# Controls when the workflow will run depending on given event(s) e.g. pushing code using git push
+# With each event, one can define the branch(es) of code on which to run with `*` representing all branches
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - '**/README.md'
+  pull_request:
+    branches: [ master ]
+    paths-ignore: [ '**/README.md' ]
+
+  # Allows one to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # id of job, a string that is unique to the "jobs" node above.
+  test:
+    # Title that will appear for job when specific workflow runs
+    name: Run flutter test and analyze
+    # Type of virtual machine (runner) on which to execute the job
+    runs-on: ubuntu-latest
+
+    # Sequence of tasks/actions/shell commands with which to which to execute / install the needed pre-requisites for the job
+    steps:
+      # The branch or tag ref that triggered the workflow will be checked out.
+      # See: https://github.com/actions/checkout
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      # Install Java from previously created Github Action
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - run: java -version
+
+      # Install Flutter from previously created Github Action
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      # Install Dart Full Coverage from previously created Github Action to ensure coverage of 100%
+      - uses: stelynx/dart-full-coverage@v1.0.5
+        with:
+          # The name of your package, the same as you use in imports
+          package: "magic_fitness_app"
+          # A comma-separated list of files to be ignored and not imported in `test_file`
+          ignore: "*_event.dart, *_state.dart, *.g.dart, *.freezed.dart, *.config.dart, *.mocks.dart, bloc_observer.dart"
+
+      - run: flutter --version  # Confirm Flutter is operational
+
+      - name: Get all Flutter Packages # Label for one's step to display on GitHub.
+        run: flutter pub get # This will execute the command provided to it
+        
+      - name: Format the project code
+        run: flutter format .
+
+      - name: Check for lint issues in our Project
+        continue-on-error: true
+        run: flutter analyze
+
+      - name: Test Flutter App with coverage
+        run: flutter test --coverage .
+
+      - name: Upload code coverage to codecov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

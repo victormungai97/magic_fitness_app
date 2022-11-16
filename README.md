@@ -201,8 +201,7 @@ on the data before handing the result to the business logic Layer.
 ---
 
 ## THIRD PARTY PACKAGES
-> Source:
-> -> [Dart packages](https://pub.dev)
+> Source: [Dart packages](https://pub.dev)
 
 A number of external third-party packages have been used in this project to provide extended capability. This include:
 
@@ -210,6 +209,10 @@ A number of external third-party packages have been used in this project to prov
   + Contains a set of __recommended lints__ for Dart and Flutter (on top of pre-defined linting rules) to encourage good coding practices.
   + These added rules help particularly in _enforcing documentation_ among other scenarios.
   + The lint set provided by the package is  activated in the `analysis_options.yaml` file located at the root of your package.
+
++ [_**hive**_](https://pub.dev/packages/hive) and [_**hive_generator**_](https://pub.dev/packages/hive_generator)
+  + Is blazing fast and lightweight key-value database that is written in pure Dart.
+  + Used in-app for persistent storage of workouts.
 
 + [**_bloc_**](https://pub.dev/packages/bloc):
   + Package that helps to implement the __Business Logic Component__ (*BLOC*) design pattern for separation of code.
@@ -219,17 +222,22 @@ A number of external third-party packages have been used in this project to prov
       + Widgets that make it easy to integrate `blocs` and `cubits` into Flutter.
     + [_**hydrated_bloc**_](https://pub.dev/packages/hydrated_bloc):
       + An extension to _package:bloc_ which **automatically persists and restores states** of bloc and cubit.
-      + Built on top of [_**hive**_](https://pub.dev/packages/hive) for a **`platform-agnostic`**, performant storage layer.
+      + Built on top of **_hive_** for a **`platform-agnostic`**, performant storage layer.
+    + [_**form_bloc**_](https://pub.dev/packages/form_bloc) and [_**flutter_form_bloc**_](https://pub.dev/packages/flutter_form_bloc)
+      + Facilitate easy form state management using BLoC pattern by separating the form state and business logic from the UI.
 
 + [**_freezed_**](https://pub.dev/packages/freezed) and [**_freezed_annotation_**](https://pub.dev/packages/freezed_annotation):
   + Used for code generation particularly with regards to data classes **_("models")_**.
   + Implement immutable classes with builtin value equality.
   + Handles (de)serialization compatible and in conjunction with **_json_serializable_**.
-  + Used in conjuction with **_bloc_** to generate event and state classes by use of [*Union types and Sealed classes*](https://pub.dev/packages/freezed#union-types-and-sealed-classes).
+  + Used in conjunction with **_bloc_** to generate event and state classes by use of [*Union types and Sealed classes*](https://pub.dev/packages/freezed#union-types-and-sealed-classes).
 + [**_json_serializable_**](https://pub.dev/packages/json_serializable) and [**_json_annotation_**](https://pub.dev/packages/json_annotation)
   + Provides builders for handling **JSON** in application.
   + These builders generate code when finding annotations particularly for custom JSON keys.
 
 + [**_path_provider_**](https://pub.dev/packages/path_provider):
   + Used to find commonly used locations on the filesystem on native (non-web) platforms.
-  + Works in conjunction with **_hydrated_bloc_** to set up the directory for persistent storage and access of states. 
+  + Works in conjunction with **_hydrated_bloc_** to set up the directory for persistent storage and access of states.
+
++ [**_uuid_**](https://pub.dev/packages/uuid)
+  + Implementing generation of unique IDs for workout sessions recorded.
