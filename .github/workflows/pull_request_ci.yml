@@ -1,0 +1,62 @@
+# This file defines a CI/CD workflow to run in Github Actions to release a preview of the application
+
+# This workflow shall build the flutter app for the web then create a pull request
+# and shall only run when a push event is carried out on branches
+# other than the specified branch(es)
+
+# Name of workflow.
+name: Flutter Build and Deploy Application Preview
+
+on:
+  # NB: This event will only trigger when not on branches specified in `branches-ignore`
+  push:
+    branches-ignore:
+      - "main"
+      - "master"
+
+  workflow_dispatch:
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      # The branch or tag ref that triggered the workflow will be checked out.
+      # See: https://github.com/actions/checkout
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+
+      - name: Avail Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Clean up and Get dependencies
+        run: |
+          flutter clean
+          flutter pub get
+
+      - name: Create merge request
+        uses: devops-infra/action-pull-request@v0.5.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: ${{ steps.extract_branch.outputs.branch }}
+          target_branch: master
+          title: My pull request
+          # template: .github/PULL_REQUEST_TEMPLATE.md
+          body: "**Automated pull request**"
+          reviewer: victormungai97
+          assignee: victormungai97
+          label: enhancement
+          milestone: My milestone
+          draft: true
+          old_string: "<!-- Add your description here -->"
+          new_string: "** Automatic pull request**"
+          get_diff: true
+          ignore_users: "dependabot"
+          allow_no_diff: false

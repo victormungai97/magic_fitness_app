@@ -59,6 +59,9 @@ jobs:
       - name: Get all Flutter Packages # Label for one's step to display on GitHub.
         run: flutter pub get # This will execute the command provided to it
         
+      - name: Carry out automated code generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
       - name: Format the project code
         run: flutter format .
 
