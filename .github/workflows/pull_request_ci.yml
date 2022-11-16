@@ -41,11 +41,20 @@ jobs:
           flutter clean
           flutter pub get
 
+  pull_request_creation:
+    runs-on: ubuntu-latest
+
+    steps:
+      # The branch or tag ref that triggered the workflow will be checked out.
+      # See: https://github.com/actions/checkout
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
       - name: Create merge request
         uses: devops-infra/action-pull-request@v0.5.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: ${{ steps.extract_branch.outputs.branch }}
+          source_branch: development
           target_branch: master
           title: My pull request
           # template: .github/PULL_REQUEST_TEMPLATE.md
