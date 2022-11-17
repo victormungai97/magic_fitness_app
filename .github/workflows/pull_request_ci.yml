@@ -31,6 +31,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
