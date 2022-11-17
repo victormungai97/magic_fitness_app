@@ -40,3 +40,20 @@ jobs:
         run: |
           flutter clean
           flutter pub get
+
+      - name: Build application for deployment on website
+        run: flutter build web --web-renderer canvaskit --dart-define="flavor=${ENVIRONMENT}"
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Deploy to Firebase Hosting (Preview)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MAGIC_FITNESS_APP }}'
+          expires: 30d  # length of time preview channel should remain active after the last deploy
+          projectId: ${{ secrets.FIREBASE_WEB_APPID }}
+          channelId: 'pr-${{ github.event.number }}-${{ steps.extract_branch.outputs.branch }}'
