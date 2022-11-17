@@ -31,18 +31,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
         with:
-          commit-message: "[create-pull-request] ${{ github.event.commits[0].message }}"
-          title: Changes carried out by ${{ github.actor }}
-          body: Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
-          labels: automated-pr,development
-          base: master
-          branch: ${{ steps.extract_branch.outputs.branch }}
-          delete-branch: true
+          pr_title: "Changes carried out by ${{ github.actor }}" # Title of pull request
+          pr_body: |                                        # Full markdown support, requires pr_title to be set
+            :crown: *An automated PR*
+
+            _Created by [repo-sync/pull-request](https://github.com/repo-sync/pull-request)_
+            _Commit message -> ${{ github.event.commits[0].message }}_
+          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
+          pr_allow_empty: true                              # Creates pull request even if there are no changes
