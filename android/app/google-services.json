@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "727504168503",
+    "project_id": "magic-fitness-app",
+    "storage_bucket": "magic-fitness-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727504168503:android:10f290a09e259cdc46c1b2",
+        "android_client_info": {
+          "package_name": "fit.magic.flutter_test.magic_fitness_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727504168503-90eegp6s6utslc61094l55mlmhlrml5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9ZcqWayNT2VKIb03ufKZKrr537JK_kNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727504168503-90eegp6s6utslc61094l55mlmhlrml5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

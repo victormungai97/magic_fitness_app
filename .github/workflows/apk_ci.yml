@@ -1,0 +1,104 @@
+# This file defines a CI/CD workflow to run in Github Actions with focus on Flutter Android
+
+# This workflow shall build the flutter android APK
+# and shall only run when the flutter web workflow is executed or completed
+# using the workflow_run event as a trigger
+# Source: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_run
+
+# Name of workflow.
+name: Flutter Build APK and Deploy to Firebase App Distribution
+
+# Workflow will only trigger when `Flutter Web` workflow completed when running on `master` branch
+on:
+  # NB: This event will only trigger a workflow run if the workflow file is on the default branch.
+  workflow_run:
+    workflows: ["Flutter Build and Deploy to Web"]
+    types:
+      - completed
+    branches: [ master ]
+
+  workflow_dispatch:
+
+# Set environment variables that are scoped at the workflow level
+env:
+  PROPERTIES_PATH: "./android/key.properties"
+
+# Jobs will only run when Flutter Web workflow completes successfully
+jobs:
+  on-web-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The Flutter Web workflow that triggered this workflow passed'
+      - run: echo 'We shall now build Android APK and deploy it'
+
+  # Build Android APK
+  build_apk:
+    name: Build an Android APK
+    needs: [ on-web-success ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Creating the `key.properties` file
+        run: |
+          echo "${{ secrets.KEY_PROPERTIES_FILE_CONTENTS }}" | base64 --decode > ${{env.PROPERTIES_PATH}}
+
+      - name: Decoding base64 key into a file
+        run: echo "${{ secrets.KEY_STORE_CONTENTS }}" | base64 --decode > android/app/upload-keystore.jks
+
+      - name: Clean up and Get dependencies
+        run: |
+          flutter clean
+          rm -rf android/.gradle
+          flutter pub get
+
+      - name: Build apk for distribution
+        run: flutter build apk
+
+      - name: 'Upload built APK to GitHub'
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  # Release for APK
+  release_apk:
+    name: Release an Android APK for distribution
+    needs: build_apk
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - name: Download APK artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: release-apk
+      - name: Upload APK to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.3.4
+        with:
+          appId: ${{secrets.FIREBASE_ANDROID_APPID}}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: app-release.apk
+
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The Flutter Web workflow that triggered this workflow failed'
+      - run: echo 'We shall now notify administrators of this failure'

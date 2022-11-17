@@ -1,0 +1,20 @@
+A FEW CONVENTIONS WITH REGARDS TO FLUTTER TESTING
+Sources: https://www.youtube.com/watch?v=RDY6UYh-nyg
+
+for naming/describing an individual test, go with
+1. (Given) some context
+2. (When) some action is carried out
+3. (Then) a particular set of observable consequences should obtain
+
+for an ordinary test, format is
+1. Arrange / Assemble -> Set up & initialize on the required objects (can also be done in setUp function)
+2. Act -> Run the action whose result to be tested
+3. Assert -> Compare result against some standard e.g. in `expect`
+
+for bloc test, you
+1. provide the bloc/cubit in `build`,
+2. add the event/call function in `act` and
+3. list the expected state(s) in the order of being emitted in `expect`
+
+for testing functionality that has dependencies, replace those dependencies with mocks
+this can be provided by the `mockito` package which comes included in `bloc_test` package

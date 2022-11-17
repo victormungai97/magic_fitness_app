@@ -1,0 +1,43 @@
+# This file defines a CI/CD workflow to run in Github Actions to create a pull request.
+
+# This workflow shall only run when a push event is carried out on branches
+# other than the specified branch(es)
+
+# Name of workflow.
+name: Merge branch to default branch
+
+# Workflow will only trigger when `Flutter Test` workflow is completed
+on:
+  # NB: This event will only trigger when not on branches specified in `branches-ignore`
+  workflow_run:
+    workflows: ["Flutter Test"]
+    types:
+      - completed
+    branches-ignore:
+      - "main"
+      - "master"
+
+  workflow_dispatch:
+
+
+jobs:
+
+  pull_request_creation:
+    runs-on: ubuntu-latest
+
+    steps:
+      # The branch or tag ref that triggered the workflow will be checked out.
+      # See: https://github.com/actions/checkout
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "[create-pull-request] ${{ github.event.commits[0].message }}"
+          title: Changes carried out by ${{ github.actor }}
+          body: Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action
+          labels: automated-pr,development
+          base: master
+          branch: ${{ steps.extract_branch.outputs.branch }}
+          delete-branch: true
