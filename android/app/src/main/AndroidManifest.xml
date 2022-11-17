@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fit.magic.flutter_test.magic_fitness_app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
    <application
         android:label="magic_fitness_app"
         android:name="${applicationName}"

@@ -62,6 +62,7 @@ android {
            signingConfig signingConfigs.release
        }
    }
+    namespace 'fit.magic.flutter_test.magic_fitness_app'
 }
 
 flutter {
