@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:727504168503:android:10f290a09e259cdc46c1b2",
+        "mobilesdk_app_id": "1:727504168503:android:513723b03186cd7b46c1b2",
         "android_client_info": {
-          "package_name": "fit.magic.flutter_test.magic_fitness_app"
+          "package_name": "fit.magic.fitness_app"
         }
       },
       "oauth_client": [

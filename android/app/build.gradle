@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "fit.magic.flutter_test.magic_fitness_app"
+        applicationId "fit.magic.fitness_app"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -62,7 +62,7 @@ android {
            signingConfig signingConfigs.release
        }
    }
-    namespace 'fit.magic.flutter_test.magic_fitness_app'
+    namespace 'fit.magic.fitness_app'
 }
 
 flutter {
