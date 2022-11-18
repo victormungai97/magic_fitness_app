@@ -44,4 +44,35 @@ class StorageService {
     // return workouts
     return box.values.toList(growable: false);
   }
+
+  /// Get individual workout based on ID
+  Future<WorkoutModel?> getWorkout({String? id}) async {
+    // No ID provided
+    if (!id.exists) return null;
+
+    // Open Hive box
+    final box = await Hive.openBox<WorkoutModel>(_applicationBox);
+
+    // Return the workout if it exists
+    return box.get(id);
+
+  }
+
+  /// Edit individual workout based on ID
+  Future<void> editWorkout(dynamic key, WorkoutModel workoutModel) async {
+    // Open Hive box
+    final box = await Hive.openBox<WorkoutModel>(_applicationBox);
+
+    // Update value in database box
+    await box.put(key, workoutModel);
+  }
+
+  /// Delete workout
+  Future<void> deleteWorkout(dynamic id) async {
+    // Open Hive box
+    final box = await Hive.openBox<WorkoutModel>(_applicationBox);
+
+    await box.delete(id);
+
+  }
 }

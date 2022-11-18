@@ -1,6 +1,5 @@
 // lib/models/data/workouts.dart
 
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:magic_fitness_app/constants/constants.dart';

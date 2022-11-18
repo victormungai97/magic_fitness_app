@@ -20,18 +20,24 @@ mixin _$WorkoutEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Map<String, dynamic> details) created,
+    required TResult Function(WorkoutModel workoutModel) edited,
+    required TResult Function(String? id) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Map<String, dynamic> details)? created,
+    TResult? Function(WorkoutModel workoutModel)? edited,
+    TResult? Function(String? id)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Map<String, dynamic> details)? created,
+    TResult Function(WorkoutModel workoutModel)? edited,
+    TResult Function(String? id)? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$WorkoutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutStarted value) initial,
     required TResult Function(_WorkoutSessionCreated value) created,
+    required TResult Function(_WorkoutSessionEdited value) edited,
+    required TResult Function(_WorkoutSessionDeleted value) deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutStarted value)? initial,
     TResult? Function(_WorkoutSessionCreated value)? created,
+    TResult? Function(_WorkoutSessionEdited value)? edited,
+    TResult? Function(_WorkoutSessionDeleted value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutStarted value)? initial,
     TResult Function(_WorkoutSessionCreated value)? created,
+    TResult Function(_WorkoutSessionEdited value)? edited,
+    TResult Function(_WorkoutSessionDeleted value)? deleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Map<String, dynamic> details) created,
+    required TResult Function(WorkoutModel workoutModel) edited,
+    required TResult Function(String? id) deleted,
   }) {
     return initial();
   }
@@ -123,6 +137,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Map<String, dynamic> details)? created,
+    TResult? Function(WorkoutModel workoutModel)? edited,
+    TResult? Function(String? id)? deleted,
   }) {
     return initial?.call();
   }
@@ -132,6 +148,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Map<String, dynamic> details)? created,
+    TResult Function(WorkoutModel workoutModel)? edited,
+    TResult Function(String? id)? deleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,6 +163,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutStarted value) initial,
     required TResult Function(_WorkoutSessionCreated value) created,
+    required TResult Function(_WorkoutSessionEdited value) edited,
+    required TResult Function(_WorkoutSessionDeleted value) deleted,
   }) {
     return initial(this);
   }
@@ -154,6 +174,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutStarted value)? initial,
     TResult? Function(_WorkoutSessionCreated value)? created,
+    TResult? Function(_WorkoutSessionEdited value)? edited,
+    TResult? Function(_WorkoutSessionDeleted value)? deleted,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +185,8 @@ class _$_WorkoutStarted implements _WorkoutStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutStarted value)? initial,
     TResult Function(_WorkoutSessionCreated value)? created,
+    TResult Function(_WorkoutSessionEdited value)? edited,
+    TResult Function(_WorkoutSessionDeleted value)? deleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -249,6 +273,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Map<String, dynamic> details) created,
+    required TResult Function(WorkoutModel workoutModel) edited,
+    required TResult Function(String? id) deleted,
   }) {
     return created(details);
   }
@@ -258,6 +284,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Map<String, dynamic> details)? created,
+    TResult? Function(WorkoutModel workoutModel)? edited,
+    TResult? Function(String? id)? deleted,
   }) {
     return created?.call(details);
   }
@@ -267,6 +295,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Map<String, dynamic> details)? created,
+    TResult Function(WorkoutModel workoutModel)? edited,
+    TResult Function(String? id)? deleted,
     required TResult orElse(),
   }) {
     if (created != null) {
@@ -280,6 +310,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutStarted value) initial,
     required TResult Function(_WorkoutSessionCreated value) created,
+    required TResult Function(_WorkoutSessionEdited value) edited,
+    required TResult Function(_WorkoutSessionDeleted value) deleted,
   }) {
     return created(this);
   }
@@ -289,6 +321,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutStarted value)? initial,
     TResult? Function(_WorkoutSessionCreated value)? created,
+    TResult? Function(_WorkoutSessionEdited value)? edited,
+    TResult? Function(_WorkoutSessionDeleted value)? deleted,
   }) {
     return created?.call(this);
   }
@@ -298,6 +332,8 @@ class _$_WorkoutSessionCreated implements _WorkoutSessionCreated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutStarted value)? initial,
     TResult Function(_WorkoutSessionCreated value)? created,
+    TResult Function(_WorkoutSessionEdited value)? edited,
+    TResult Function(_WorkoutSessionDeleted value)? deleted,
     required TResult orElse(),
   }) {
     if (created != null) {
@@ -318,12 +354,319 @@ abstract class _WorkoutSessionCreated implements WorkoutEvent {
 }
 
 /// @nodoc
+abstract class _$$_WorkoutSessionEditedCopyWith<$Res> {
+  factory _$$_WorkoutSessionEditedCopyWith(_$_WorkoutSessionEdited value,
+          $Res Function(_$_WorkoutSessionEdited) then) =
+      __$$_WorkoutSessionEditedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WorkoutModel workoutModel});
+
+  $WorkoutModelCopyWith<$Res> get workoutModel;
+}
+
+/// @nodoc
+class __$$_WorkoutSessionEditedCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res, _$_WorkoutSessionEdited>
+    implements _$$_WorkoutSessionEditedCopyWith<$Res> {
+  __$$_WorkoutSessionEditedCopyWithImpl(_$_WorkoutSessionEdited _value,
+      $Res Function(_$_WorkoutSessionEdited) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? workoutModel = null,
+  }) {
+    return _then(_$_WorkoutSessionEdited(
+      null == workoutModel
+          ? _value.workoutModel
+          : workoutModel // ignore: cast_nullable_to_non_nullable
+              as WorkoutModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkoutModelCopyWith<$Res> get workoutModel {
+    return $WorkoutModelCopyWith<$Res>(_value.workoutModel, (value) {
+      return _then(_value.copyWith(workoutModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_WorkoutSessionEdited implements _WorkoutSessionEdited {
+  const _$_WorkoutSessionEdited(this.workoutModel);
+
+  @override
+  final WorkoutModel workoutModel;
+
+  @override
+  String toString() {
+    return 'WorkoutEvent.edited(workoutModel: $workoutModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkoutSessionEdited &&
+            (identical(other.workoutModel, workoutModel) ||
+                other.workoutModel == workoutModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, workoutModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WorkoutSessionEditedCopyWith<_$_WorkoutSessionEdited> get copyWith =>
+      __$$_WorkoutSessionEditedCopyWithImpl<_$_WorkoutSessionEdited>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Map<String, dynamic> details) created,
+    required TResult Function(WorkoutModel workoutModel) edited,
+    required TResult Function(String? id) deleted,
+  }) {
+    return edited(workoutModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Map<String, dynamic> details)? created,
+    TResult? Function(WorkoutModel workoutModel)? edited,
+    TResult? Function(String? id)? deleted,
+  }) {
+    return edited?.call(workoutModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Map<String, dynamic> details)? created,
+    TResult Function(WorkoutModel workoutModel)? edited,
+    TResult Function(String? id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (edited != null) {
+      return edited(workoutModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WorkoutStarted value) initial,
+    required TResult Function(_WorkoutSessionCreated value) created,
+    required TResult Function(_WorkoutSessionEdited value) edited,
+    required TResult Function(_WorkoutSessionDeleted value) deleted,
+  }) {
+    return edited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WorkoutStarted value)? initial,
+    TResult? Function(_WorkoutSessionCreated value)? created,
+    TResult? Function(_WorkoutSessionEdited value)? edited,
+    TResult? Function(_WorkoutSessionDeleted value)? deleted,
+  }) {
+    return edited?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WorkoutStarted value)? initial,
+    TResult Function(_WorkoutSessionCreated value)? created,
+    TResult Function(_WorkoutSessionEdited value)? edited,
+    TResult Function(_WorkoutSessionDeleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (edited != null) {
+      return edited(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutSessionEdited implements WorkoutEvent {
+  const factory _WorkoutSessionEdited(final WorkoutModel workoutModel) =
+      _$_WorkoutSessionEdited;
+
+  WorkoutModel get workoutModel;
+  @JsonKey(ignore: true)
+  _$$_WorkoutSessionEditedCopyWith<_$_WorkoutSessionEdited> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_WorkoutSessionDeletedCopyWith<$Res> {
+  factory _$$_WorkoutSessionDeletedCopyWith(_$_WorkoutSessionDeleted value,
+          $Res Function(_$_WorkoutSessionDeleted) then) =
+      __$$_WorkoutSessionDeletedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? id});
+}
+
+/// @nodoc
+class __$$_WorkoutSessionDeletedCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res, _$_WorkoutSessionDeleted>
+    implements _$$_WorkoutSessionDeletedCopyWith<$Res> {
+  __$$_WorkoutSessionDeletedCopyWithImpl(_$_WorkoutSessionDeleted _value,
+      $Res Function(_$_WorkoutSessionDeleted) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_$_WorkoutSessionDeleted(
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_WorkoutSessionDeleted implements _WorkoutSessionDeleted {
+  const _$_WorkoutSessionDeleted(this.id);
+
+  @override
+  final String? id;
+
+  @override
+  String toString() {
+    return 'WorkoutEvent.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkoutSessionDeleted &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WorkoutSessionDeletedCopyWith<_$_WorkoutSessionDeleted> get copyWith =>
+      __$$_WorkoutSessionDeletedCopyWithImpl<_$_WorkoutSessionDeleted>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Map<String, dynamic> details) created,
+    required TResult Function(WorkoutModel workoutModel) edited,
+    required TResult Function(String? id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Map<String, dynamic> details)? created,
+    TResult? Function(WorkoutModel workoutModel)? edited,
+    TResult? Function(String? id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Map<String, dynamic> details)? created,
+    TResult Function(WorkoutModel workoutModel)? edited,
+    TResult Function(String? id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WorkoutStarted value) initial,
+    required TResult Function(_WorkoutSessionCreated value) created,
+    required TResult Function(_WorkoutSessionEdited value) edited,
+    required TResult Function(_WorkoutSessionDeleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WorkoutStarted value)? initial,
+    TResult? Function(_WorkoutSessionCreated value)? created,
+    TResult? Function(_WorkoutSessionEdited value)? edited,
+    TResult? Function(_WorkoutSessionDeleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WorkoutStarted value)? initial,
+    TResult Function(_WorkoutSessionCreated value)? created,
+    TResult Function(_WorkoutSessionEdited value)? edited,
+    TResult Function(_WorkoutSessionDeleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutSessionDeleted implements WorkoutEvent {
+  const factory _WorkoutSessionDeleted(final String? id) =
+      _$_WorkoutSessionDeleted;
+
+  String? get id;
+  @JsonKey(ignore: true)
+  _$$_WorkoutSessionDeletedCopyWith<_$_WorkoutSessionDeleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$WorkoutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() load,
-    required TResult Function(String? message) create,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
     required TResult Function(String exception) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -331,7 +674,9 @@ mixin _$WorkoutState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? load,
-    TResult? Function(String? message)? create,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
     TResult? Function(String exception)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -339,7 +684,9 @@ mixin _$WorkoutState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? load,
-    TResult Function(String? message)? create,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
     TResult Function(String exception)? failure,
     required TResult orElse(),
   }) =>
@@ -349,6 +696,8 @@ mixin _$WorkoutState {
     required TResult Function(WorkoutInitial value) initial,
     required TResult Function(WorkoutLoading value) load,
     required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
     required TResult Function(WorkoutFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -357,6 +706,8 @@ mixin _$WorkoutState {
     TResult? Function(WorkoutInitial value)? initial,
     TResult? Function(WorkoutLoading value)? load,
     TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
     TResult? Function(WorkoutFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -365,6 +716,8 @@ mixin _$WorkoutState {
     TResult Function(WorkoutInitial value)? initial,
     TResult Function(WorkoutLoading value)? load,
     TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
     TResult Function(WorkoutFailure value)? failure,
     required TResult orElse(),
   }) =>
@@ -429,7 +782,9 @@ class _$WorkoutInitial implements WorkoutInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() load,
-    required TResult Function(String? message) create,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
     required TResult Function(String exception) failure,
   }) {
     return initial();
@@ -440,7 +795,9 @@ class _$WorkoutInitial implements WorkoutInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? load,
-    TResult? Function(String? message)? create,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
     TResult? Function(String exception)? failure,
   }) {
     return initial?.call();
@@ -451,7 +808,9 @@ class _$WorkoutInitial implements WorkoutInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? load,
-    TResult Function(String? message)? create,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
     TResult Function(String exception)? failure,
     required TResult orElse(),
   }) {
@@ -467,6 +826,8 @@ class _$WorkoutInitial implements WorkoutInitial {
     required TResult Function(WorkoutInitial value) initial,
     required TResult Function(WorkoutLoading value) load,
     required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
     required TResult Function(WorkoutFailure value) failure,
   }) {
     return initial(this);
@@ -478,6 +839,8 @@ class _$WorkoutInitial implements WorkoutInitial {
     TResult? Function(WorkoutInitial value)? initial,
     TResult? Function(WorkoutLoading value)? load,
     TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
     TResult? Function(WorkoutFailure value)? failure,
   }) {
     return initial?.call(this);
@@ -489,6 +852,8 @@ class _$WorkoutInitial implements WorkoutInitial {
     TResult Function(WorkoutInitial value)? initial,
     TResult Function(WorkoutLoading value)? load,
     TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
     TResult Function(WorkoutFailure value)? failure,
     required TResult orElse(),
   }) {
@@ -543,7 +908,9 @@ class _$WorkoutLoading implements WorkoutLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() load,
-    required TResult Function(String? message) create,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
     required TResult Function(String exception) failure,
   }) {
     return load();
@@ -554,7 +921,9 @@ class _$WorkoutLoading implements WorkoutLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? load,
-    TResult? Function(String? message)? create,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
     TResult? Function(String exception)? failure,
   }) {
     return load?.call();
@@ -565,7 +934,9 @@ class _$WorkoutLoading implements WorkoutLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? load,
-    TResult Function(String? message)? create,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
     TResult Function(String exception)? failure,
     required TResult orElse(),
   }) {
@@ -581,6 +952,8 @@ class _$WorkoutLoading implements WorkoutLoading {
     required TResult Function(WorkoutInitial value) initial,
     required TResult Function(WorkoutLoading value) load,
     required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
     required TResult Function(WorkoutFailure value) failure,
   }) {
     return load(this);
@@ -592,6 +965,8 @@ class _$WorkoutLoading implements WorkoutLoading {
     TResult? Function(WorkoutInitial value)? initial,
     TResult? Function(WorkoutLoading value)? load,
     TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
     TResult? Function(WorkoutFailure value)? failure,
   }) {
     return load?.call(this);
@@ -603,6 +978,8 @@ class _$WorkoutLoading implements WorkoutLoading {
     TResult Function(WorkoutInitial value)? initial,
     TResult Function(WorkoutLoading value)? load,
     TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
     TResult Function(WorkoutFailure value)? failure,
     required TResult orElse(),
   }) {
@@ -622,8 +999,6 @@ abstract class _$$WorkoutCreationSuccessCopyWith<$Res> {
   factory _$$WorkoutCreationSuccessCopyWith(_$WorkoutCreationSuccess value,
           $Res Function(_$WorkoutCreationSuccess) then) =
       __$$WorkoutCreationSuccessCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? message});
 }
 
 /// @nodoc
@@ -633,61 +1008,38 @@ class __$$WorkoutCreationSuccessCopyWithImpl<$Res>
   __$$WorkoutCreationSuccessCopyWithImpl(_$WorkoutCreationSuccess _value,
       $Res Function(_$WorkoutCreationSuccess) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_$WorkoutCreationSuccess(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
-  const _$WorkoutCreationSuccess({this.message});
-
-  @override
-  final String? message;
+  const _$WorkoutCreationSuccess();
 
   @override
   String toString() {
-    return 'WorkoutState.create(message: $message)';
+    return 'WorkoutState.create()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WorkoutCreationSuccess &&
-            (identical(other.message, message) || other.message == message));
+        (other.runtimeType == runtimeType && other is _$WorkoutCreationSuccess);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WorkoutCreationSuccessCopyWith<_$WorkoutCreationSuccess> get copyWith =>
-      __$$WorkoutCreationSuccessCopyWithImpl<_$WorkoutCreationSuccess>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() load,
-    required TResult Function(String? message) create,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
     required TResult Function(String exception) failure,
   }) {
-    return create(message);
+    return create();
   }
 
   @override
@@ -695,10 +1047,12 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? load,
-    TResult? Function(String? message)? create,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
     TResult? Function(String exception)? failure,
   }) {
-    return create?.call(message);
+    return create?.call();
   }
 
   @override
@@ -706,12 +1060,14 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? load,
-    TResult Function(String? message)? create,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
     TResult Function(String exception)? failure,
     required TResult orElse(),
   }) {
     if (create != null) {
-      return create(message);
+      return create();
     }
     return orElse();
   }
@@ -722,6 +1078,8 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
     required TResult Function(WorkoutInitial value) initial,
     required TResult Function(WorkoutLoading value) load,
     required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
     required TResult Function(WorkoutFailure value) failure,
   }) {
     return create(this);
@@ -733,6 +1091,8 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
     TResult? Function(WorkoutInitial value)? initial,
     TResult? Function(WorkoutLoading value)? load,
     TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
     TResult? Function(WorkoutFailure value)? failure,
   }) {
     return create?.call(this);
@@ -744,6 +1104,8 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
     TResult Function(WorkoutInitial value)? initial,
     TResult Function(WorkoutLoading value)? load,
     TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
     TResult Function(WorkoutFailure value)? failure,
     required TResult orElse(),
   }) {
@@ -755,13 +1117,259 @@ class _$WorkoutCreationSuccess implements WorkoutCreationSuccess {
 }
 
 abstract class WorkoutCreationSuccess implements WorkoutState {
-  const factory WorkoutCreationSuccess({final String? message}) =
-      _$WorkoutCreationSuccess;
+  const factory WorkoutCreationSuccess() = _$WorkoutCreationSuccess;
+}
 
-  String? get message;
-  @JsonKey(ignore: true)
-  _$$WorkoutCreationSuccessCopyWith<_$WorkoutCreationSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+/// @nodoc
+abstract class _$$WorkoutEditionSuccessCopyWith<$Res> {
+  factory _$$WorkoutEditionSuccessCopyWith(_$WorkoutEditionSuccess value,
+          $Res Function(_$WorkoutEditionSuccess) then) =
+      __$$WorkoutEditionSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WorkoutEditionSuccessCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res, _$WorkoutEditionSuccess>
+    implements _$$WorkoutEditionSuccessCopyWith<$Res> {
+  __$$WorkoutEditionSuccessCopyWithImpl(_$WorkoutEditionSuccess _value,
+      $Res Function(_$WorkoutEditionSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WorkoutEditionSuccess implements WorkoutEditionSuccess {
+  const _$WorkoutEditionSuccess();
+
+  @override
+  String toString() {
+    return 'WorkoutState.edit()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WorkoutEditionSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() load,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
+    required TResult Function(String exception) failure,
+  }) {
+    return edit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? load,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
+    TResult? Function(String exception)? failure,
+  }) {
+    return edit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? load,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
+    TResult Function(String exception)? failure,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WorkoutInitial value) initial,
+    required TResult Function(WorkoutLoading value) load,
+    required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
+    required TResult Function(WorkoutFailure value) failure,
+  }) {
+    return edit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WorkoutInitial value)? initial,
+    TResult? Function(WorkoutLoading value)? load,
+    TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
+    TResult? Function(WorkoutFailure value)? failure,
+  }) {
+    return edit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WorkoutInitial value)? initial,
+    TResult Function(WorkoutLoading value)? load,
+    TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
+    TResult Function(WorkoutFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WorkoutEditionSuccess implements WorkoutState {
+  const factory WorkoutEditionSuccess() = _$WorkoutEditionSuccess;
+}
+
+/// @nodoc
+abstract class _$$WorkoutDeletionSuccessCopyWith<$Res> {
+  factory _$$WorkoutDeletionSuccessCopyWith(_$WorkoutDeletionSuccess value,
+          $Res Function(_$WorkoutDeletionSuccess) then) =
+      __$$WorkoutDeletionSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WorkoutDeletionSuccessCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res, _$WorkoutDeletionSuccess>
+    implements _$$WorkoutDeletionSuccessCopyWith<$Res> {
+  __$$WorkoutDeletionSuccessCopyWithImpl(_$WorkoutDeletionSuccess _value,
+      $Res Function(_$WorkoutDeletionSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$WorkoutDeletionSuccess implements WorkoutDeletionSuccess {
+  const _$WorkoutDeletionSuccess();
+
+  @override
+  String toString() {
+    return 'WorkoutState.delete()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WorkoutDeletionSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() load,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
+    required TResult Function(String exception) failure,
+  }) {
+    return delete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? load,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
+    TResult? Function(String exception)? failure,
+  }) {
+    return delete?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? load,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
+    TResult Function(String exception)? failure,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WorkoutInitial value) initial,
+    required TResult Function(WorkoutLoading value) load,
+    required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
+    required TResult Function(WorkoutFailure value) failure,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(WorkoutInitial value)? initial,
+    TResult? Function(WorkoutLoading value)? load,
+    TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
+    TResult? Function(WorkoutFailure value)? failure,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WorkoutInitial value)? initial,
+    TResult Function(WorkoutLoading value)? load,
+    TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
+    TResult Function(WorkoutFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WorkoutDeletionSuccess implements WorkoutState {
+  const factory WorkoutDeletionSuccess() = _$WorkoutDeletionSuccess;
 }
 
 /// @nodoc
@@ -831,7 +1439,9 @@ class _$WorkoutFailure implements WorkoutFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() load,
-    required TResult Function(String? message) create,
+    required TResult Function() create,
+    required TResult Function() edit,
+    required TResult Function() delete,
     required TResult Function(String exception) failure,
   }) {
     return failure(exception);
@@ -842,7 +1452,9 @@ class _$WorkoutFailure implements WorkoutFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? load,
-    TResult? Function(String? message)? create,
+    TResult? Function()? create,
+    TResult? Function()? edit,
+    TResult? Function()? delete,
     TResult? Function(String exception)? failure,
   }) {
     return failure?.call(exception);
@@ -853,7 +1465,9 @@ class _$WorkoutFailure implements WorkoutFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? load,
-    TResult Function(String? message)? create,
+    TResult Function()? create,
+    TResult Function()? edit,
+    TResult Function()? delete,
     TResult Function(String exception)? failure,
     required TResult orElse(),
   }) {
@@ -869,6 +1483,8 @@ class _$WorkoutFailure implements WorkoutFailure {
     required TResult Function(WorkoutInitial value) initial,
     required TResult Function(WorkoutLoading value) load,
     required TResult Function(WorkoutCreationSuccess value) create,
+    required TResult Function(WorkoutEditionSuccess value) edit,
+    required TResult Function(WorkoutDeletionSuccess value) delete,
     required TResult Function(WorkoutFailure value) failure,
   }) {
     return failure(this);
@@ -880,6 +1496,8 @@ class _$WorkoutFailure implements WorkoutFailure {
     TResult? Function(WorkoutInitial value)? initial,
     TResult? Function(WorkoutLoading value)? load,
     TResult? Function(WorkoutCreationSuccess value)? create,
+    TResult? Function(WorkoutEditionSuccess value)? edit,
+    TResult? Function(WorkoutDeletionSuccess value)? delete,
     TResult? Function(WorkoutFailure value)? failure,
   }) {
     return failure?.call(this);
@@ -891,6 +1509,8 @@ class _$WorkoutFailure implements WorkoutFailure {
     TResult Function(WorkoutInitial value)? initial,
     TResult Function(WorkoutLoading value)? load,
     TResult Function(WorkoutCreationSuccess value)? create,
+    TResult Function(WorkoutEditionSuccess value)? edit,
+    TResult Function(WorkoutDeletionSuccess value)? delete,
     TResult Function(WorkoutFailure value)? failure,
     required TResult orElse(),
   }) {

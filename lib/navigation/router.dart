@@ -34,6 +34,14 @@ class AppRouter {
           key: ValueKey(WidgetKeys.detailPage),
         ),
       ),
+      GoRoute(
+        path: '${Routes.detail}/:id',
+        builder: (context, GoRouterState state) => DetailPage(
+          key: ValueKey('${WidgetKeys.detailPage}/:id'),
+          id: state.params['id'],
+        ),
+
+      ),
     ],
     // Declare first route to be rendered when app starts
     initialLocation: Routes.root,

@@ -4,11 +4,32 @@ part of 'detail.dart';
 
 class _Body extends StatelessWidget {
   /// Constructor for the body of workout detail screen
-  const _Body({super.key});
+  const _Body({super.key, this.id});
+
+  /// Unique identifier for an optional pre-existing workout
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+    void success() {
+      context.read<DetailFormBloc>().clear();
+
+      context.read<WorkoutsBloc>().add(const WorkoutsEvent.retrieve());
+
+      scaffoldMessenger
+          .showSnackBar(
+        SnackBar(
+          content: ListTile(title: Text(Labels.success, style: TextStyle(color: Colors.green.shade300),),),
+          action: SnackBarAction(
+            label: Labels.close,
+            onPressed: scaffoldMessenger.hideCurrentSnackBar,
+          ),
+          dismissDirection: DismissDirection.horizontal,
+        ),
+      );
+    }
 
     return FormBlocListener<DetailFormBloc, String, String>(
       onSubmitting: (context, state) => LoadingDialog.show(context),
@@ -16,7 +37,12 @@ class _Body extends StatelessWidget {
       onSuccess: (context, state) {
         LoadingDialog.hide(context);
 
-        context.read<WorkoutBloc>().add(WorkoutEvent.created(json.decode(state.successResponse ?? '{}') as Map<String, dynamic>),);
+        if (!id.exists) {context.read<WorkoutBloc>().add(WorkoutEvent.created(json.decode(state.successResponse ?? '{}') as Map<String, dynamic>),);}
+        else {
+          final results = json.decode(state.successResponse ?? '{}') as Map<String, dynamic>;
+          results[JsonKeys.id] = id;
+          context.read<WorkoutBloc>().add(WorkoutEvent.edited(WorkoutModel.fromJson(results)),);
+        }
       },
       onFailure: (context, state) {
         LoadingDialog.hide(context);
@@ -53,32 +79,19 @@ class _Body extends StatelessWidget {
           return BlocConsumer<WorkoutBloc, WorkoutState>(
   listener: (context, state) {
     state.whenOrNull(
-      create: (_) {
-        context.read<DetailFormBloc>().clear();
-
-        scaffoldMessenger
-            .showSnackBar(
-          SnackBar(
-            content: ListTile(title: Text(Labels.success, style: TextStyle(color: Colors.green.shade300),),),
-            action: SnackBarAction(
-              label: Labels.close,
-              onPressed: scaffoldMessenger.hideCurrentSnackBar,
-            ),
-            dismissDirection: DismissDirection.horizontal,
-          ),
-        )
-            .closed
-            .then((_) => context.pop());
-      },
+      create: success,
+      edit: success
     );
   },
             builder: (context, state) {
-    Widget child = const DetailForm(key: WidgetKeys.detailForm);
-    state.whenOrNull(
-      load: () => child = const Center(child: CircularProgressIndicator(),),
-      failure: (exception) => child = DetailError(message: exception),
-    );
-    return child;
+    return state.when(
+          initial: () => const DetailForm(key: WidgetKeys.detailForm),
+          load: () => const Center(child: CircularProgressIndicator(),),
+          create: () => const DetailSuccess(key: WidgetKeys.detailSuccess,),
+          edit: () => const DetailSuccess(key: WidgetKeys.detailSuccess, editing: true,),
+          failure: (exception) => DetailError(message: exception),
+      delete: SizedBox.new,
+        );
             },
 );
         },

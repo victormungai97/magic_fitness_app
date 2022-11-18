@@ -8,6 +8,9 @@ class Labels {
   /// Title
   static const title = 'Magic Fitness';
 
+  /// New
+  static const new_ = 'New';
+
   /// Exercises
   static const exercises = 'Exercises';
 
@@ -43,4 +46,7 @@ class Labels {
 
   /// Close
   static const close = 'Close';
+
+  /// Unspecified
+  static const unspecified = 'Unspecified';
 }
