@@ -8,9 +8,6 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) => context.read<WorkoutsBloc>().add(const WorkoutsEvent.retrieve()),
-    // );
     final state = context.watch<WorkoutsBloc>().state;
     return state.when(
       retrieval: (workouts) {

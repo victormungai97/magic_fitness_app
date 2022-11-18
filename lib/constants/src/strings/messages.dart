@@ -8,6 +8,12 @@ class Errors {
   /// No saved workouts
   static const noWorkouts = 'No workouts found';
 
+  /// Absent workout
+  static const absentWorkout = 'Workout not provided';
+
+  /// ID of workout missing
+  static const idWorkoutMissing = 'Workout ID missing';
+
   /// Problem getting pre-existing exercises
   static const exercisesIssues = 'Cannot get pre-existing exercises';
 

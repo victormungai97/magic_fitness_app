@@ -30,6 +30,9 @@ class WidgetKeys {
 
   /// Detail error key
   static const detailError = ValueKey('DetailError');
+
+  /// Detail success key
+  static const detailSuccess= ValueKey('DetailSuccess');
 }
 
 

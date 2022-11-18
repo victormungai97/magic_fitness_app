@@ -54,4 +54,38 @@ class MockStorageService extends _i1.Mock implements _i2.StorageService {
         returnValue:
             _i3.Future<List<_i4.WorkoutModel>>.value(<_i4.WorkoutModel>[]),
       ) as _i3.Future<List<_i4.WorkoutModel>>);
+  @override
+  _i3.Future<_i4.WorkoutModel?> getWorkout({String? id}) => (super.noSuchMethod(
+        Invocation.method(
+          #getWorkout,
+          [],
+          {#id: id},
+        ),
+        returnValue: _i3.Future<_i4.WorkoutModel?>.value(),
+      ) as _i3.Future<_i4.WorkoutModel?>);
+  @override
+  _i3.Future<void> editWorkout(
+    dynamic key,
+    _i4.WorkoutModel? workoutModel,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editWorkout,
+          [
+            key,
+            workoutModel,
+          ],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+  @override
+  _i3.Future<void> deleteWorkout(dynamic id) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteWorkout,
+          [id],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

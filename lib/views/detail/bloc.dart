@@ -9,7 +9,7 @@ part of 'detail.dart';
 class DetailFormBloc extends FormBloc<String, String> {
   /// Constructor for [DetailFormBloc].
   /// Add all field blocs here
-  DetailFormBloc(this._workoutController) : super(isLoading: true) {
+  DetailFormBloc(this._workoutController, {required this.id}) : super(isLoading: true) {
     addFieldBlocs(
       fieldBlocs: <FieldBloc>[
         exercises, weights, units, timeOfExercise, repetitions
@@ -82,6 +82,17 @@ class DetailFormBloc extends FormBloc<String, String> {
 
       exercises.updateItems(savedExercises);
 
+      final workout = (await _workoutController.getWorkout(id: id))?.toJson();
+      if (workout != null) {
+        exercises.updateInitialValue('${workout[JsonKeys.exercise]}');
+        weights.updateInitialValue('${workout[JsonKeys.weights]}');
+        units.updateInitialValue('${workout[JsonKeys.units]}');
+        repetitions.updateInitialValue('${workout[JsonKeys.repetitions]}',);
+        timeOfExercise.updateInitialValue(
+          DateFormat('MMMM d, yyyy hh:mm a').parse('${workout[JsonKeys.dateTime]}',),
+        );
+      }
+
       emitLoaded();
     } catch (err, stackTrace) {
       log(
@@ -125,4 +136,7 @@ class DetailFormBloc extends FormBloc<String, String> {
 
   /// Instance of Workout controller
   final WorkoutController _workoutController;
+
+  /// Unique identifier for an optional pre-existing workout
+  final String? id;
 }

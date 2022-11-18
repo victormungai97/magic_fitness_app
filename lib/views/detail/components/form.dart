@@ -37,118 +37,125 @@ class DetailForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formBloc = context.read<DetailFormBloc>();
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 5),
-            child: Text(Tooltips.timeOfExercise, style: TextStyle(fontSize: 18),),
-          ),
-          DateTimeFieldBlocBuilder(
-            dateTimeFieldBloc: formBloc.timeOfExercise,
-            canSelectTime: true,
-            format: DateFormat('MMMM d, yyyy hh:mm a'),
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
-            decoration: const InputDecoration(
-              labelText: Labels.exerciseTime,
-              prefixIcon: Icon(Icons.date_range),
+    final width = MediaQuery.of(context).size.width;
+
+    return Scrollbar(
+      trackVisibility: width <= 576,
+      thumbVisibility: width <= 576,
+      child: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(Tooltips.timeOfExercise, style: TextStyle(fontSize: 18),),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: Text(Tooltips.weightLifted, style: TextStyle(fontSize: 18),),
-          ),
-          Row(
-            children: [
-              Expanded(
-                flex: 7,
-                child: ListTile(
-                  leading: IconButton(onPressed: () => _add(formBloc.weights), color: Colors.black, icon: const Icon(Icons.add),),
-                  title: TextFieldBlocBuilder(
-                    textFieldBloc: formBloc.weights,
-                    decoration: InputDecoration(
-                      labelText: Labels.weights,
-                      prefixIcon:
-                      const Icon(Icons.fitness_center),
-                      suffixIcon: IconButton(icon: const Icon(Icons.close), onPressed: formBloc.weights.clear, iconSize: 12,),
+            DateTimeFieldBlocBuilder(
+              dateTimeFieldBloc: formBloc.timeOfExercise,
+              canSelectTime: true,
+              format: DateFormat('MMMM d, yyyy hh:mm a'),
+              initialDate: DateTime.now(),
+              firstDate: DateTime(1900),
+              lastDate: DateTime.now(),
+              decoration: const InputDecoration(
+                labelText: Labels.exerciseTime,
+                prefixIcon: Icon(Icons.date_range),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Text(Tooltips.weightLifted, style: TextStyle(fontSize: 18),),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: ListTile(
+                    leading: IconButton(onPressed: () => _add(formBloc.weights), color: Colors.black, icon: const Icon(Icons.add),),
+                    title: TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.weights,
+                      decoration: InputDecoration(
+                        labelText: Labels.weights,
+                        prefixIcon:
+                        const Icon(Icons.fitness_center),
+                        suffixIcon: IconButton(icon: const Icon(Icons.close), onPressed: formBloc.weights.clear, iconSize: 12,),
+                      ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                      ],
+                      keyboardType: TextInputType.number,
                     ),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-                    ],
-                    keyboardType: TextInputType.number,
+                    dense: true,
+                    trailing: IconButton(onPressed: () => _subtract(formBloc.weights), color: Colors.black, icon: const Icon(Icons.remove),),
                   ),
-                  dense: true,
-                  trailing: IconButton(onPressed: () => _subtract(formBloc.weights), color: Colors.black, icon: const Icon(Icons.remove),),
                 ),
-              ),
-              Expanded(child: DropdownFieldBlocBuilder<String>(
-                selectFieldBloc: formBloc.units,
-                decoration: const InputDecoration.collapsed(hintText: Labels.units,),
-                itemBuilder: (context, value) => FieldItem(
-                  child: Text(value),
-                ),
-              ),),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            child: Text(Tooltips.exerciseDone, style: TextStyle(fontSize: 18),),
-          ),
-          RadioButtonGroupFieldBlocBuilder<String>(
-            selectFieldBloc: formBloc.exercises,
-            itemBuilder: (context, item) => FieldItem(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 12,
-                  top: 10,
-                  bottom: 10,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.fitbit),
-                    const SizedBox(width: 5),
-                    Text(item.capitalize()),
-                  ],
-                ),
-              ),
-            ),
-            decoration: const InputDecoration(
-              labelText: Labels.exercises,
-              prefixIcon: Icon(Icons.fitbit_sharp),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: Text(Tooltips.repetitionsPerformed, style: TextStyle(fontSize: 18),),
-          ),
-          ListTile(
-            leading: IconButton(onPressed: () => _add(formBloc.repetitions), color: Colors.black, icon: const Icon(Icons.add),),
-            title: TextFieldBlocBuilder(
-              textFieldBloc: formBloc.repetitions,
-              decoration: InputDecoration(
-                labelText: Labels.repetitions,
-                prefixIcon:
-                const Icon(Icons.repeat_one),
-                suffixIcon: IconButton(icon: const Icon(Icons.close), onPressed: formBloc.repetitions.clear, iconSize: 12,),
-              ),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                Expanded(child: DropdownFieldBlocBuilder<String>(
+                  selectFieldBloc: formBloc.units,
+                  decoration: const InputDecoration.collapsed(hintText: Labels.units,),
+                  itemBuilder: (context, value) => FieldItem(
+                    child: Text(value),
+                  ),
+                ),),
               ],
-              keyboardType: TextInputType.number,
             ),
-            dense: true,
-            trailing: IconButton(onPressed: () => _subtract(formBloc.repetitions), color: Colors.black, icon: const Icon(Icons.remove),),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: formBloc.submit,
-            child: Text(Labels.submit.capitalize()),
-          ),
-        ],
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              child: Text(Tooltips.exerciseDone, style: TextStyle(fontSize: 18),),
+            ),
+            RadioButtonGroupFieldBlocBuilder<String>(
+              selectFieldBloc: formBloc.exercises,
+              itemBuilder: (context, item) => FieldItem(
+                onTap: () => formBloc.exercises.updateValue(item),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 12,
+                    top: 10,
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.fitbit),
+                      const SizedBox(width: 5),
+                      Text(item.capitalize()),
+                    ],
+                  ),
+                ),
+              ),
+              decoration: const InputDecoration(
+                labelText: Labels.exercises,
+                prefixIcon: Icon(Icons.fitbit_sharp),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Text(Tooltips.repetitionsPerformed, style: TextStyle(fontSize: 18),),
+            ),
+            ListTile(
+              leading: IconButton(onPressed: () => _add(formBloc.repetitions), color: Colors.black, icon: const Icon(Icons.add),),
+              title: TextFieldBlocBuilder(
+                textFieldBloc: formBloc.repetitions,
+                decoration: InputDecoration(
+                  labelText: Labels.repetitions,
+                  prefixIcon:
+                  const Icon(Icons.repeat_one),
+                  suffixIcon: IconButton(icon: const Icon(Icons.close), onPressed: formBloc.repetitions.clear, iconSize: 12,),
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                ],
+                keyboardType: TextInputType.number,
+              ),
+              dense: true,
+              trailing: IconButton(onPressed: () => _subtract(formBloc.repetitions), color: Colors.black, icon: const Icon(Icons.remove),),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: formBloc.submit,
+              child: Text(Labels.submit.capitalize()),
+            ),
+          ],
+        ),
       ),
     );
   }

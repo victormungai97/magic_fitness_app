@@ -1,6 +1,6 @@
 {
-    "name": "magic_fitness_app",
-    "short_name": "magic_fitness_app",
+    "name": "Magic Fitness",
+    "short_name": "magic_fitness",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

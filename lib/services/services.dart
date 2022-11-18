@@ -4,6 +4,7 @@
 
 import 'package:hive/hive.dart';
 import 'package:magic_fitness_app/constants/constants.dart';
+import 'package:magic_fitness_app/extensions/extensions.dart';
 import 'package:magic_fitness_app/models/models.dart';
 import 'package:uuid/uuid.dart';
 

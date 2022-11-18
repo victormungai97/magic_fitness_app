@@ -13,7 +13,13 @@ class WorkoutState with _$WorkoutState {
   const factory WorkoutState.load() = WorkoutLoading;
 
   /// New workout created successfully
-  const factory WorkoutState.create({String? message}) = WorkoutCreationSuccess;
+  const factory WorkoutState.create() = WorkoutCreationSuccess;
+
+  /// Edition of workout successful
+  const factory WorkoutState.edit() = WorkoutEditionSuccess;
+
+  /// Removal of individual workout
+  const factory WorkoutState.delete() = WorkoutDeletionSuccess;
 
   /// Problem carry out workout actions
   const factory WorkoutState.failure({required String exception}) = WorkoutFailure;
