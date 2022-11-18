@@ -91,8 +91,8 @@ jobs:
       - name: Upload APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.3.4
         with:
-          appId: ${{secrets.FIREBASE_ANDROID_APPID}}
-          serviceCredentialsFileContent: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MAGIC_FITNESS_APP }}'
+          appId: ${{secrets.FIREBASE_APP_ID_ANDROID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
           groups: testers
           file: app-release.apk
 
