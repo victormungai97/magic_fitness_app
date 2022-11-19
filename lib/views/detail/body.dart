@@ -18,10 +18,14 @@ class _Body extends StatelessWidget {
 
       context.read<WorkoutsBloc>().add(const WorkoutsEvent.retrieve());
 
-      scaffoldMessenger
-          .showSnackBar(
+      scaffoldMessenger.showSnackBar(
         SnackBar(
-          content: ListTile(title: Text(Labels.success, style: TextStyle(color: Colors.green.shade300),),),
+          content: ListTile(
+            title: Text(
+              Labels.success,
+              style: TextStyle(color: Colors.green.shade300),
+            ),
+          ),
           action: SnackBarAction(
             label: Labels.close,
             onPressed: scaffoldMessenger.hideCurrentSnackBar,
@@ -37,11 +41,18 @@ class _Body extends StatelessWidget {
       onSuccess: (context, state) {
         LoadingDialog.hide(context);
 
-        if (!id.exists) {context.read<WorkoutBloc>().add(WorkoutEvent.created(json.decode(state.successResponse ?? '{}') as Map<String, dynamic>),);}
-        else {
-          final results = json.decode(state.successResponse ?? '{}') as Map<String, dynamic>;
+        if (!id.exists) {
+          context.read<WorkoutBloc>().add(
+                WorkoutEvent.created(json.decode(state.successResponse ?? '{}')
+                    as Map<String, dynamic>),
+              );
+        } else {
+          final results = json.decode(state.successResponse ?? '{}')
+              as Map<String, dynamic>;
           results[JsonKeys.id] = id;
-          context.read<WorkoutBloc>().add(WorkoutEvent.edited(WorkoutModel.fromJson(results)),);
+          context.read<WorkoutBloc>().add(
+                WorkoutEvent.edited(WorkoutModel.fromJson(results)),
+              );
         }
       },
       onFailure: (context, state) {
@@ -56,10 +67,14 @@ class _Body extends StatelessWidget {
           level: Level.SEVERE.value,
         );
 
-        scaffoldMessenger
-            .showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: ListTile(title: Text('$label\n$message', style: TextStyle(color: Colors.pink.shade300),),),
+            content: ListTile(
+              title: Text(
+                '$label\n$message',
+                style: TextStyle(color: Colors.pink.shade300),
+              ),
+            ),
             action: SnackBarAction(
               label: Labels.close,
               onPressed: scaffoldMessenger.hideCurrentSnackBar,
@@ -77,26 +92,29 @@ class _Body extends StatelessWidget {
             return DetailError(message: formState.failureResponse);
           }
           return BlocConsumer<WorkoutBloc, WorkoutState>(
-  listener: (context, state) {
-    state.whenOrNull(
-      create: success,
-      edit: success
-    );
-  },
-            builder: (context, state) {
-    return state.when(
-          initial: () => const DetailForm(key: WidgetKeys.detailForm),
-          load: () => const Center(child: CircularProgressIndicator(),),
-          create: () => const DetailSuccess(key: WidgetKeys.detailSuccess,),
-          edit: () => const DetailSuccess(key: WidgetKeys.detailSuccess, editing: true,),
-          failure: (exception) => DetailError(message: exception),
-      delete: SizedBox.new,
-        );
+            listener: (context, state) {
+              state.whenOrNull(create: success, edit: success);
             },
-);
+            builder: (context, state) {
+              return state.when(
+                initial: () => const DetailForm(key: WidgetKeys.detailForm),
+                load: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                create: () => const DetailSuccess(
+                  key: WidgetKeys.detailSuccess,
+                ),
+                edit: () => const DetailSuccess(
+                  key: WidgetKeys.detailSuccess,
+                  editing: true,
+                ),
+                failure: (exception) => DetailError(message: exception),
+                delete: SizedBox.new,
+              );
+            },
+          );
         },
       ),
     );
   }
 }
-

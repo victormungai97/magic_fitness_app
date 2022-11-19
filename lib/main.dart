@@ -19,7 +19,7 @@ void main() async {
   // Initialize hive
   Hive
     ..init(kIsWeb ? null : (await getTemporaryDirectory()).path)
-  // Register Type Adapter for non-primitive types e.g. classes, enums e.t.c
+    // Register Type Adapter for non-primitive types e.g. classes, enums e.t.c
     ..registerAdapter(WorkoutModelAdapter());
 
   // set up to start up bloc
@@ -47,7 +47,10 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<WorkoutController>(
-          create: (_) => WorkoutController(StorageService(box),),),
+          create: (_) => WorkoutController(
+            StorageService(box),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [

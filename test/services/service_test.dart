@@ -59,7 +59,7 @@ void main() {
             When no exercise is given while creating a workout 
             Then an exception is raised 
             ''',
-          () async {
+      () async {
         expect(storageService.createWorkout({}), throwsException);
       },
     );
@@ -76,7 +76,8 @@ void main() {
 
         // 2. ACT
         final exercise = StorageService.exercises.first;
-        final id = await service.createWorkout({JsonKeys.exercise: exercise}) ?? '';
+        final id =
+            await service.createWorkout({JsonKeys.exercise: exercise}) ?? '';
 
         // 3. ASSERT
         expect(id, isNotNull);
@@ -85,22 +86,19 @@ void main() {
       },
     );
 
-    test(
-        '''
+    test('''
             Given the `StorageService` class
             When requesting workouts 
             Then a list of workouts is returned 
-            ''',
-            () async {
+            ''', () async {
       // 1. ARRANGE
       final service = storageService;
 
       // 2. ACT
       when(box.values).thenReturn([]);
-              final values = await service.obtainWorkouts();
+      final values = await service.obtainWorkouts();
 
-              expect(values, isA<List<WorkoutModel>>());
-    }
-    );
+      expect(values, isA<List<WorkoutModel>>());
+    });
   });
 }

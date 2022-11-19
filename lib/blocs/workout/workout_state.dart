@@ -22,5 +22,6 @@ class WorkoutState with _$WorkoutState {
   const factory WorkoutState.delete() = WorkoutDeletionSuccess;
 
   /// Problem carry out workout actions
-  const factory WorkoutState.failure({required String exception}) = WorkoutFailure;
+  const factory WorkoutState.failure({required String exception}) =
+      WorkoutFailure;
 }

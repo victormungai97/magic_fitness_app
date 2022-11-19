@@ -41,14 +41,17 @@ void main() {
             When querying exercises 
             Then four exercises are returned 
             ''',
-            () async {
+        () async {
+          when(mockStorageService.retrieveExercises()).thenAnswer(
+            (_) => Future.value(StorageService.exercises),
+          );
 
-          when(mockStorageService.retrieveExercises()).thenAnswer((_) => Future.value(StorageService.exercises),);
-
-          expect(await controller.retrieveExercises(), const TypeMatcher<List<String>>(),);
+          expect(
+            await controller.retrieveExercises(),
+            const TypeMatcher<List<String>>(),
+          );
         },
       );
-
     },
   );
 }

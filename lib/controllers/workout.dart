@@ -26,7 +26,7 @@ class WorkoutController {
         time: DateTime.now(),
       );
     }
-      return null;
+    return null;
   }
 
   /// Obtain all workouts
@@ -38,11 +38,11 @@ class WorkoutController {
   /// Edit individual workout based on ID
   Future<String?> editWorkout(WorkoutModel? workoutModel) async {
     try {
-    if (workoutModel == null) return Errors.absentWorkout;
+      if (workoutModel == null) return Errors.absentWorkout;
 
-    if (!workoutModel.id.exists) return Errors.idWorkoutMissing;
+      if (!workoutModel.id.exists) return Errors.idWorkoutMissing;
 
-    await _service.editWorkout(workoutModel.id, workoutModel);
+      await _service.editWorkout(workoutModel.id, workoutModel);
     } catch (error, stackTrace) {
       log(
         'Something went wrong editing workout\n$error',

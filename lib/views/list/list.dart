@@ -18,27 +18,29 @@ class ListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void load() => context.read<WorkoutsBloc>().add(const WorkoutsEvent.retrieve(),);
+    void load() => context.read<WorkoutsBloc>().add(
+          const WorkoutsEvent.retrieve(),
+        );
     WidgetsBinding.instance.addPostFrameCallback((_) => load());
     return Scaffold(
-          body: const _Body(key: WidgetKeys.listBody),
-          appBar: AppBar(
-            title: const Text(Labels.title),
-            actions: [
-              IconButton(
-                onPressed: () => context.push(Routes.detail),
-                icon: const Icon(Icons.fitness_center_sharp),
-                tooltip: Tooltips.workoutNew,
-                iconSize: 18,
-              ),
-              IconButton(
-                icon: const Icon(Icons.replay_sharp),
-                onPressed: load,
-                tooltip: Tooltips.getWorkouts,
-                iconSize: 18,
-              ),
-            ],
+      body: const _Body(key: WidgetKeys.listBody),
+      appBar: AppBar(
+        title: const Text(Labels.title),
+        actions: [
+          IconButton(
+            onPressed: () => context.push(Routes.detail),
+            icon: const Icon(Icons.fitness_center_sharp),
+            tooltip: Tooltips.workoutNew,
+            iconSize: 18,
           ),
-        );
+          IconButton(
+            icon: const Icon(Icons.replay_sharp),
+            onPressed: load,
+            tooltip: Tooltips.getWorkouts,
+            iconSize: 18,
+          ),
+        ],
+      ),
+    );
   }
 }
