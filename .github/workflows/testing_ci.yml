@@ -91,11 +91,6 @@ jobs:
       - name: Format the project code
         run: flutter format .
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-
       - name: Create Pull Request
         uses: docker://ghcr.io/repo-sync/pull-request:v2
         with:
@@ -107,3 +102,7 @@ jobs:
   
             _Created by [repo-sync/pull-request](https://github.com/repo-sync/pull-request)_
           source_branch: ""
+          pr_label: "automated-pr"
+          pr_allow_empty: true                              # Creates pull request even if there are no changes
+          pr_assignee: "${{ github.actor }}"
+          pr_reviewer: "victormungai97"

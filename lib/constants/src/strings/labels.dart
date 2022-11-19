@@ -49,4 +49,10 @@ class Labels {
 
   /// Unspecified
   static const unspecified = 'Unspecified';
+
+  /// Hive box production name
+  static const applicationBox = 'applicationBox';
+
+  /// Hive box test name
+  static const testBox = 'testBox';
 }

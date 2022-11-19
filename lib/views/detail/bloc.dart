@@ -9,7 +9,7 @@ part of 'detail.dart';
 class DetailFormBloc extends FormBloc<String, String> {
   /// Constructor for [DetailFormBloc].
   /// Add all field blocs here
-  DetailFormBloc(this._workoutController, {required this.id}) : super(isLoading: true) {
+  DetailFormBloc(this._workoutController, {required this.id,}) : super(isLoading: true) {
     addFieldBlocs(
       fieldBlocs: <FieldBloc>[
         exercises, weights, units, timeOfExercise, repetitions

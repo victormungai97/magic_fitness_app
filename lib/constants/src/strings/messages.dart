@@ -17,6 +17,9 @@ class Errors {
   /// Problem getting pre-existing exercises
   static const exercisesIssues = 'Cannot get pre-existing exercises';
 
+  /// Exercise not provided when recording workout
+  static const missingExercise = 'Workout exercise not provided';
+
   /// Workout not saved
   static const workoutUnsaved = 'Workout has not been recorded';
 
