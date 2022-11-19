@@ -9,4 +9,3 @@ import 'package:magic_fitness_app/models/models.dart';
 import 'package:uuid/uuid.dart';
 
 part 'storage.dart';
-

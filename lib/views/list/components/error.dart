@@ -9,7 +9,6 @@ import 'package:magic_fitness_app/navigation/navigation.dart';
 
 /// Custom error widget for the detail page
 class ListError extends StatelessWidget {
-
   /// Constructor for error page in workout manipulation (creation & editing)
   const ListError({super.key, this.message});
 
@@ -40,14 +39,14 @@ class ListError extends StatelessWidget {
               icon: Icon(empty ? Icons.add : Icons.replay),
               onPressed: empty
                   ? () {
-                context
-                    .read<WorkoutBloc>()
-                    .add(const WorkoutEvent.initial());
-                context.push(Routes.detail);
-              }
+                      context
+                          .read<WorkoutBloc>()
+                          .add(const WorkoutEvent.initial());
+                      context.push(Routes.detail);
+                    }
                   : () => context
-                  .read<WorkoutsBloc>()
-                  .add(const WorkoutsEvent.retrieve()),
+                      .read<WorkoutsBloc>()
+                      .add(const WorkoutsEvent.retrieve()),
               label: Text(empty ? Labels.new_ : Labels.retry),
             ),
           ],

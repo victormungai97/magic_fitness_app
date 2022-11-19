@@ -30,28 +30,28 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.read<WorkoutController>();
     return BlocProvider(
-        create: (context) => DetailFormBloc(controller, id: id),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            inputDecorationTheme: InputDecorationTheme(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
+      create: (context) => DetailFormBloc(controller, id: id),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: WillPopScope(
-            onWillPop: () async {
-              context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
-              return true;
-            },
-            child: Scaffold(
-                body: _Body(key: WidgetKeys.detailBody, id: id),
-                appBar: AppBar(
-                  title: const Text(Labels.title),
-                ),
-              ),
+        ),
+        child: WillPopScope(
+          onWillPop: () async {
+            context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
+            return true;
+          },
+          child: Scaffold(
+            body: _Body(key: WidgetKeys.detailBody, id: id),
+            appBar: AppBar(
+              title: const Text(Labels.title),
+            ),
           ),
-          ),
+        ),
+      ),
     );
   }
 }

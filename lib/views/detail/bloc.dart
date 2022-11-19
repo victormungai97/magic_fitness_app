@@ -9,10 +9,17 @@ part of 'detail.dart';
 class DetailFormBloc extends FormBloc<String, String> {
   /// Constructor for [DetailFormBloc].
   /// Add all field blocs here
-  DetailFormBloc(this._workoutController, {required this.id,}) : super(isLoading: true) {
+  DetailFormBloc(
+    this._workoutController, {
+    required this.id,
+  }) : super(isLoading: true) {
     addFieldBlocs(
       fieldBlocs: <FieldBloc>[
-        exercises, weights, units, timeOfExercise, repetitions
+        exercises,
+        weights,
+        units,
+        timeOfExercise,
+        repetitions
       ],
     );
   }
@@ -20,8 +27,9 @@ class DetailFormBloc extends FormBloc<String, String> {
   ///  Field BLoC for choosing a preferred exercises
   final exercises = SelectFieldBloc<String, dynamic>(
     validators: [
-    // Mark input from this field as mandatory
-    FieldBlocValidators.required,],
+      // Mark input from this field as mandatory
+      FieldBlocValidators.required,
+    ],
     name: JsonKeys.exercise,
   );
 
@@ -46,7 +54,8 @@ class DetailFormBloc extends FormBloc<String, String> {
   final timeOfExercise = InputFieldBloc<DateTime?, dynamic>(
     validators: [
       // Mark input from this field as mandatory
-      FieldBlocValidators.required,],
+      FieldBlocValidators.required,
+    ],
     initialValue: DateTime.now(),
     name: JsonKeys.dateTime,
   );
@@ -87,9 +96,13 @@ class DetailFormBloc extends FormBloc<String, String> {
         exercises.updateInitialValue('${workout[JsonKeys.exercise]}');
         weights.updateInitialValue('${workout[JsonKeys.weights]}');
         units.updateInitialValue('${workout[JsonKeys.units]}');
-        repetitions.updateInitialValue('${workout[JsonKeys.repetitions]}',);
+        repetitions.updateInitialValue(
+          '${workout[JsonKeys.repetitions]}',
+        );
         timeOfExercise.updateInitialValue(
-          DateFormat('MMMM d, yyyy hh:mm a').parse('${workout[JsonKeys.dateTime]}',),
+          DateFormat('MMMM d, yyyy hh:mm a').parse(
+            '${workout[JsonKeys.dateTime]}',
+          ),
         );
       }
 
@@ -111,7 +124,9 @@ class DetailFormBloc extends FormBloc<String, String> {
     try {
       await Future<void>.delayed(const Duration(milliseconds: 500));
 
-      final time = DateFormat('MMMM d, yyyy hh:mm a').format(timeOfExercise.value ?? DateTime.now(),);
+      final time = DateFormat('MMMM d, yyyy hh:mm a').format(
+        timeOfExercise.value ?? DateTime.now(),
+      );
 
       final details = <String, dynamic>{
         exercises.name: exercises.value,
@@ -124,7 +139,7 @@ class DetailFormBloc extends FormBloc<String, String> {
       emitSuccess(successResponse: json.encode(details));
     } catch (err, stackTrace) {
       log(
-          'Error submitting form',
+        'Error submitting form',
         error: err,
         stackTrace: stackTrace,
         level: Level.SEVERE.value,

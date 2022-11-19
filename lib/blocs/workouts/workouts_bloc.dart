@@ -14,7 +14,6 @@ part 'workouts_bloc.freezed.dart';
 part 'workouts_event.dart';
 part 'workouts_state.dart';
 
-
 /// BLoC facilitating manipulation and access of multiple workouts.
 
 class WorkoutsBloc extends Bloc<WorkoutsEvent, WorkoutsState> {
@@ -25,13 +24,21 @@ class WorkoutsBloc extends Bloc<WorkoutsEvent, WorkoutsState> {
         emit(const WorkoutsState.load());
         await Future<void>.delayed(const Duration(milliseconds: 500));
         final workouts = await _workoutController.getWorkouts();
-        workouts.sort((a,b) {
+        workouts.sort((a, b) {
           final fmt = DateFormat('MMMM d, yyyy hh:mm a');
-          return fmt.parse(a.timeOfExercise ?? '').compareTo(fmt.parse(b.timeOfExercise ?? ''),);
+          return fmt.parse(a.timeOfExercise ?? '').compareTo(
+                fmt.parse(b.timeOfExercise ?? ''),
+              );
         });
         emit(WorkoutsState.retrieval(workouts: workouts));
       } catch (error, stackTrace) {
-        log('Error in workouts bloc retrieving sessions\n$error', error: error, stackTrace: stackTrace, level: Level.SEVERE.value, time: DateTime.now(),);
+        log(
+          'Error in workouts bloc retrieving sessions\n$error',
+          error: error,
+          stackTrace: stackTrace,
+          level: Level.SEVERE.value,
+          time: DateTime.now(),
+        );
         emit(const WorkoutsState.failure(exception: Errors.unspecifiedError));
       }
     });

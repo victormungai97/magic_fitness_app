@@ -32,9 +32,8 @@ class WidgetKeys {
   static const detailError = ValueKey('DetailError');
 
   /// Detail success key
-  static const detailSuccess= ValueKey('DetailSuccess');
+  static const detailSuccess = ValueKey('DetailSuccess');
 }
-
 
 /// Keys of form fields for use in JSON
 
@@ -58,5 +57,4 @@ class JsonKeys {
 
   /// Key for workout time
   static const dateTime = 'date_and_time';
-
 }

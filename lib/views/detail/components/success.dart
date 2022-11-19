@@ -9,7 +9,6 @@ import 'package:magic_fitness_app/constants/constants.dart';
 /// Custom success widget for the detail page
 
 class DetailSuccess extends StatelessWidget {
-
   /// Constructor for success page in workout manipulation (creation & editing)
   const DetailSuccess({super.key, this.editing = false});
 

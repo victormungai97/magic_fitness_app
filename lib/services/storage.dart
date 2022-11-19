@@ -9,7 +9,13 @@ class StorageService {
   StorageService(this._box);
 
   /// Pre-filled exercises
-  static const exercises = ['Barbell row', 'Bench press', 'Shoulder press', 'Deadlift', 'Squat',];
+  static const exercises = [
+    'Barbell row',
+    'Bench press',
+    'Shoulder press',
+    'Deadlift',
+    'Squat',
+  ];
 
   /// Hive box. A box is analogous to a table in an SQL database
   final Box<WorkoutModel> _box;
@@ -53,7 +59,6 @@ class StorageService {
 
     // Return the workout if it exists
     return _box.get(id);
-
   }
 
   /// Edit individual workout based on ID
