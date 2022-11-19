@@ -74,9 +74,9 @@ jobs:
         # Only run on main branch push (e.g. after pull request merge).
         if: github.event_name == 'push' && github.ref != 'refs/heads/master'
         run: |
-          git config --global user.name "Victor Kamau"
-          git config --global user.email "victormungai97@gmail.com"
-          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
+          git commit -a -m "${{ github.event.head_commit.message }}"
           git push
 
       - name: Create Pull Request
