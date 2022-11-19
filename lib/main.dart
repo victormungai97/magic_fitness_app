@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:magic_fitness_app/bloc_observer.dart';
 import 'package:magic_fitness_app/blocs/blocs.dart';
+import 'package:magic_fitness_app/constants/constants.dart';
 import 'package:magic_fitness_app/controllers/controllers.dart';
 import 'package:magic_fitness_app/models/models.dart';
 import 'package:magic_fitness_app/navigation/navigation.dart';
@@ -30,20 +31,23 @@ void main() async {
   );
 
   // Start application UI
-  runApp(const App());
+  runApp(App(box: await Hive.openBox<WorkoutModel>(Labels.applicationBox)));
 }
 
 /// Root widget for the application
 class App extends StatelessWidget {
   /// Constructor for the root widget
-  const App({super.key});
+  const App({super.key, required this.box});
+
+  /// Hive box in use. A box is analogous to a SQL database
+  final Box<WorkoutModel> box;
 
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<WorkoutController>(
-          create: (_) => WorkoutController(StorageService()),),
+          create: (_) => WorkoutController(StorageService(box),),),
       ],
       child: MultiBlocProvider(
         providers: [
