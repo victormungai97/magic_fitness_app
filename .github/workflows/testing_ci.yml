@@ -71,7 +71,7 @@ jobs:
 
       # Commit and push all changed files.
       - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
-        # Only run on main branch push (e.g. after pull request merge).
+        # Only run on non - master branch push
         if: github.event_name == 'push' && github.ref != 'refs/heads/master'
         run: |
           git config --global user.name "${{ github.actor }}"

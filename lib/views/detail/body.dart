@@ -88,7 +88,7 @@ class _Body extends StatelessWidget {
           initial: () => const DetailForm(key: WidgetKeys.detailForm),
           load: () => const Center(child: CircularProgressIndicator(),),
           create: () => const DetailSuccess(key: WidgetKeys.detailSuccess,),
-          edit: () => const DetailSuccess(key: WidgetKeys.detailSuccess, editing: true,),
+          edit: () => const DetailSuccess(key: WidgetKeys.detailSuccess,),
           failure: (exception) => DetailError(message: exception),
       delete: SizedBox.new,
         );
