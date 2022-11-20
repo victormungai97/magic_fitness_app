@@ -241,3 +241,6 @@ A number of external third-party packages have been used in this project to prov
 
 + [**_uuid_**](https://pub.dev/packages/uuid)
   + Implementing generation of unique IDs for workout sessions recorded.
+
++ [**_intl_**](https://pub.dev/packages/intl)
+  + Used for date formatting.
