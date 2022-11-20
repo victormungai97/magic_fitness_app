@@ -10,5 +10,6 @@ class WorkoutsEvent with _$WorkoutsEvent {
   const factory WorkoutsEvent.initial() = _WorkoutsStarted;
 
   /// Event to get all workouts
-  const factory WorkoutsEvent.retrieve({@Default(true) bool all}) = _WorkoutsRetrieved;
+  const factory WorkoutsEvent.retrieve({@Default(true) bool all}) =
+      _WorkoutsRetrieved;
 }

@@ -9,7 +9,6 @@ import 'package:magic_fitness_app/constants/constants.dart';
 /// Custom success widget for the detail page
 
 class DetailSuccess extends StatelessWidget {
-
   /// Constructor for success page in workout manipulation (creation & editing)
   const DetailSuccess({super.key});
 
@@ -32,7 +31,7 @@ class DetailSuccess extends StatelessWidget {
               label: const Text(Labels.close),
               onPressed: () {
                 context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
-                  context.pop();
+                context.pop();
               },
               icon: const Icon(Icons.close),
             ),

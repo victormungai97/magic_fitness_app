@@ -40,7 +40,6 @@ class AppRouter {
           key: ValueKey('${WidgetKeys.detailPage}/:id'),
           id: state.params['id'],
         ),
-
       ),
     ],
     // Declare first route to be rendered when app starts

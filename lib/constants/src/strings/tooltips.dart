@@ -28,5 +28,4 @@ class Tooltips {
 
   /// Get saved workouts
   static const getWorkouts = 'Get workouts';
-
 }

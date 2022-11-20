@@ -37,28 +37,39 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       }
       emit(const WorkoutState.create());
     } catch (error, stackTrace) {
-      log('Error in workout bloc creating workout\n$error', error: error,
+      log(
+        'Error in workout bloc creating workout\n$error',
+        error: error,
         stackTrace: stackTrace,
         level: Level.SEVERE.value,
-        time: DateTime.now(),);
+        time: DateTime.now(),
+      );
       emit(const WorkoutState.failure(exception: Errors.unspecifiedError));
     }
   }
-    /// Function to handle workout edition
-    Future<void> _editWorkout(WorkoutModel workoutModel) async {
-      try {
-        emit(const WorkoutState.load());
-        final res = await _workoutController.editWorkout(workoutModel);
-        if (res.exists) {
-          emit(WorkoutState.failure(exception: res ?? Errors.workoutUnsaved));
-          return;
-        }
-        emit(const WorkoutState.edit());
-      } catch (error, stackTrace) {
-        log('Error in workout bloc editing workout\n$error', error: error, stackTrace: stackTrace, level: Level.SEVERE.value, time: DateTime.now(),);
-        emit(const WorkoutState.failure(exception: Errors.unspecifiedError));
+
+  /// Function to handle workout edition
+  Future<void> _editWorkout(WorkoutModel workoutModel) async {
+    try {
+      emit(const WorkoutState.load());
+      final res = await _workoutController.editWorkout(workoutModel);
+      if (res.exists) {
+        emit(WorkoutState.failure(exception: res ?? Errors.workoutUnsaved));
+        return;
       }
+      emit(const WorkoutState.edit());
+    } catch (error, stackTrace) {
+      log(
+        'Error in workout bloc editing workout\n$error',
+        error: error,
+        stackTrace: stackTrace,
+        level: Level.SEVERE.value,
+        time: DateTime.now(),
+      );
+      emit(const WorkoutState.failure(exception: Errors.unspecifiedError));
+    }
   }
+
   /// Function to handle workout edition
   Future<void> _deleteWorkout(String? id) async {
     try {
@@ -72,11 +83,16 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       await Future<void>.delayed(const Duration(milliseconds: 500));
       emit(const WorkoutInitial());
     } catch (error, stackTrace) {
-      log('Error in workout bloc editing workout\n$error', error: error, stackTrace: stackTrace, level: Level.SEVERE.value, time: DateTime.now(),);
+      log(
+        'Error in workout bloc editing workout\n$error',
+        error: error,
+        stackTrace: stackTrace,
+        level: Level.SEVERE.value,
+        time: DateTime.now(),
+      );
       emit(const WorkoutState.failure(exception: Errors.unspecifiedError));
     }
   }
 
   final WorkoutController _workoutController;
-  }
-
+}

@@ -13,9 +13,10 @@ class WorkoutsState with _$WorkoutsState {
   const factory WorkoutsState.load() = WorkoutsLoading;
 
   /// Workouts obtained
-  const factory WorkoutsState.retrieval({@Default([]) List<WorkoutModel> workouts}) = WorkoutsRetrievalSuccess;
+  const factory WorkoutsState.retrieval(
+      {@Default([]) List<WorkoutModel> workouts}) = WorkoutsRetrievalSuccess;
 
   /// Problem requesting workouts
-  const factory WorkoutsState.failure({required String exception}) = WorkoutsFailure;
-
+  const factory WorkoutsState.failure({required String exception}) =
+      WorkoutsFailure;
 }

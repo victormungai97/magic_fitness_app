@@ -21,12 +21,12 @@ extension StringExtensions on String? {
       return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
   }
-  
+
   /// Detect if string consists of numeric characters
   bool get isNumeric {
     if (!exists) return false;
     return double.tryParse(this!) != null;
-}
+  }
 
   /// Convert to string to title case
   String get title {

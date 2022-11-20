@@ -5,7 +5,6 @@ import 'package:magic_fitness_app/constants/constants.dart';
 
 /// Custom error widget for the detail page
 class DetailError extends StatelessWidget {
-
   /// Constructor for custom page in workout manipulation (creation & editing)
   const DetailError({super.key = WidgetKeys.detailError, this.message = ''});
 

@@ -26,10 +26,14 @@ class ListEntry extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             failure: (exception) {
-              scaffoldMessenger
-                  .showSnackBar(
+              scaffoldMessenger.showSnackBar(
                 SnackBar(
-                  content: ListTile(title: Text(exception, style: TextStyle(color: Colors.pink.shade300),),),
+                  content: ListTile(
+                    title: Text(
+                      exception,
+                      style: TextStyle(color: Colors.pink.shade300),
+                    ),
+                  ),
                   action: SnackBarAction(
                     label: Labels.close,
                     onPressed: scaffoldMessenger.hideCurrentSnackBar,
@@ -38,7 +42,9 @@ class ListEntry extends StatelessWidget {
                 ),
               );
             },
-            delete: () => context.read<WorkoutsBloc>().add(const WorkoutsEvent.retrieve(),),
+            delete: () => context.read<WorkoutsBloc>().add(
+                  const WorkoutsEvent.retrieve(),
+                ),
           );
         },
         builder: (context, state) {
@@ -47,7 +53,9 @@ class ListEntry extends StatelessWidget {
           }
           return IconButton(
             icon: const Icon(Icons.delete_forever),
-            onPressed: () => context.read<WorkoutBloc>().add(WorkoutEvent.deleted(workoutModel?.id),),
+            onPressed: () => context.read<WorkoutBloc>().add(
+                  WorkoutEvent.deleted(workoutModel?.id),
+                ),
           );
         },
       ),
