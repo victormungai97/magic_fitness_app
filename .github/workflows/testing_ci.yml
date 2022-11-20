@@ -76,8 +76,18 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
-          git commit -a -m "${{ github.event.head_commit.message }}"
-          git push
+          # Check if we have modifications to commit
+          CHANGES=$(git status --porcelain | wc -l)
+          
+          if [ "$CHANGES" -gt "0" ]; then
+            # Show the status of files that are about to be created, updated or deleted
+            git status
+            
+            # Commit all changes
+            git commit -a -m "${{ github.event.head_commit.message }}"
+            # Update the repository and make sure to skip the pipeline create for this commit
+            git push
+          fi
 
       - name: Create Pull Request
         if: github.event_name == 'push' && github.ref != 'refs/heads/master'
