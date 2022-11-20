@@ -65,12 +65,12 @@ jobs:
         run: flutter test --coverage .
 
       - name: Upload code coverage to codecov
-        uses: codecov/codecov-action@v1.0.2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       # Commit and push all changed files.
-      - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
+      - name: GIT Commit Formatted code
         # Only run on non - master branch push
         if: github.event_name == 'push' && github.ref != 'refs/heads/master'
         run: |
@@ -86,12 +86,12 @@ jobs:
           destination_branch: "master"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_title: "Pulling ${{ github.ref }} into master"
-          pr_body: |                                       
+          pr_body: |
             :crown: *An automated PR*
-  
+            
             _Created by [repo-sync/pull-request](https://github.com/repo-sync/pull-request)_
           source_branch: ""
           pr_label: "automated-pr"
           pr_allow_empty: true                              # Creates pull request even if there are no changes
           pr_assignee: "${{ github.actor }}"
-          pr_reviewer: "victormungai97"
+          pr_reviewer: "${{ github.repository_owner }}"
