@@ -63,7 +63,7 @@ class ListEntry extends StatelessWidget {
         '${workoutModel?.exercise ?? Labels.unspecified} on ${workoutModel?.timeOfExercise}',
       ),
       subtitle: Text(
-        '${Labels.weights}: ${workoutModel?.weights}\n${Labels.repetitions}: ${workoutModel?.rounds}',
+        '${Labels.weights}: ${workoutModel?.weights} ${workoutModel?.units ?? Labels.kilograms}\n${Labels.repetitions}: ${workoutModel?.rounds}',
       ),
       onTap: () => context.push('${Routes.detail}/${workoutModel?.id}'),
     );

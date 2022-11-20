@@ -106,7 +106,6 @@ class _Body extends StatelessWidget {
                 ),
                 edit: () => const DetailSuccess(
                   key: WidgetKeys.detailSuccess,
-                  editing: true,
                 ),
                 failure: (exception) => DetailError(message: exception),
                 delete: SizedBox.new,

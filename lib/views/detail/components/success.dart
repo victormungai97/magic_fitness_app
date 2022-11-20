@@ -10,10 +10,7 @@ import 'package:magic_fitness_app/constants/constants.dart';
 
 class DetailSuccess extends StatelessWidget {
   /// Constructor for success page in workout manipulation (creation & editing)
-  const DetailSuccess({super.key, this.editing = false});
-
-  /// Flag to check if editing
-  final bool editing;
+  const DetailSuccess({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +28,12 @@ class DetailSuccess extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             ElevatedButton.icon(
-              label: Text(editing ? Labels.close : Labels.new_),
+              label: const Text(Labels.close),
               onPressed: () {
-                if (editing) {
-                  context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
-                  context.pop();
-                } else {
-                  context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
-                }
+                context.read<WorkoutBloc>().add(const WorkoutEvent.initial());
+                context.pop();
               },
-              icon: Icon(editing ? Icons.close : Icons.add),
+              icon: const Icon(Icons.close),
             ),
           ],
         ),
